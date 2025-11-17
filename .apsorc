@@ -1,0 +1,111 @@
+{
+  "entities": [
+    {
+      "name": "Property",
+      "created_at": false,
+      "updated_at": false,
+      "fields": [
+        {
+          "name": "address",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "type",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "rent_amount",
+          "type": "numeric",
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "name": "Tenant",
+      "created_at": false,
+      "updated_at": false,
+      "fields": [
+        {
+          "name": "name",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "email",
+          "type": "varchar",
+          "nullable": false,
+          "isUnique": true
+        },
+        {
+          "name": "phone_number",
+          "type": "varchar",
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "name": "LeaseAgreement",
+      "created_at": false,
+      "updated_at": false,
+      "fields": [
+        {
+          "name": "start_date",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "end_date",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "varchar",
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "name": "MaintenanceRequest",
+      "created_at": false,
+      "updated_at": false,
+      "fields": [
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "request_date",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "varchar",
+          "nullable": false
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "Property",
+      "to": "Tenant",
+      "type": "OneToMany"
+    },
+    {
+      "from": "Property",
+      "to": "LeaseAgreement",
+      "type": "OneToMany"
+    },
+    {
+      "from": "Property",
+      "to": "MaintenanceRequest",
+      "type": "OneToMany"
+    }
+  ],
+  "_removedEntities": []
+}
